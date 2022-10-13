@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/reglog.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img class="logoImg" src="Img/logo.jpeg" alt="" srcset="" />
+      </div>
+      <div class="logo">
+        <img class="logoImg" src="Img/user.svg" alt="" srcset="" />
+      </div>
+    </nav>
+    <main>
+      <div class="form">
+        <form action="/login" method="post">
+          <h2>Log In</h2>
+          <div class="line"></div>
+          <div class="fields">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div class="fields">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+          </div>
+          <div class="fields">
+            <input type="submit" value="Register" />
+          </div>
+          <h2><%= Message %></h2>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div class="nav">
+        <p><a href="/">Home</a></p>
+        <p><a href="/store">Store</a></p>
+        <p><a href="/contact">Contact Us</a></p>
+        <p><a href="/team">Team</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmIn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img class="logoImg" src="Img/logo.jpeg" alt="" srcset="" />
+      </div>
+      <div class="logo">
+        <img class="logoImg" src="Img/user.svg" alt="" srcset="" />
+        <p><%= UserName %></p>
+      </div>
+    </nav>
+    <main>
+      <div class="WelcomeBlock">
+        <h2 id="WelcomeLine">
+          Welcome to <span id="blue">Farm</span><span id="orange">India</span>
+        </h2>
+        <h5 id="WelcomeDesc">One Place Solution for a farmer</h5>
+      </div>
+      <div class="lines">
+        <div class="line"></div>
+
+        <a href="/login"><button class="LogReg" id="loginbtn">LogIn</button></a>
+        <a href="/reg"><button class="LogReg">SignUp</button></a>
+
+        <div class="line"></div>
+      </div>
+    </main>
+    <footer>
+      <div class="nav">
+        <p><a href="/">Home</a></p>
+        <p><a href="/store">Store</a></p>
+        <p><a href="/contact">Contact Us</a></p>
+        <p><a href="/team">Team</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

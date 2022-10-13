@@ -25,7 +25,7 @@ app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.render(path.join(__dirname, "public", "index"), {
+  res.render(path.join(__dirname, "public", "home"), {
     UserName: `${""}`,
   });
 });
@@ -42,11 +42,13 @@ app.get("/contact", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "contact.html"));
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
+app.get("/reg", (req, res) => {
+  res.render(path.join(__dirname, "public", "reg"), {
+    Message: "",
+  });
 });
 
-app.post("/login", (req, res) => {
+app.post("/reg", (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
@@ -56,22 +58,26 @@ app.post("/login", (req, res) => {
     (error) => {
       if (error) {
         console.log("Problem inserting to Database: " + error);
-        res.render(path.join(__dirname, "public", "index"));
+        res.render(path.join(__dirname, "public", "reg"), {
+          Message: "!!Problem In Database!!",
+        });
       } else {
         console.log("1 item inserted");
-        res.render(path.join(__dirname, "public", "index"), {
-          UserName: `${name}`,
+        res.render(path.join(__dirname, "public", "home"), {
+          UserName: `Welcome ${name}`,
         });
       }
     }
   );
 });
 
-app.get("/reg", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "reg.html"));
+app.get("/login", (req, res) => {
+  res.render(path.join(__dirname, "public", "login"), {
+    Message: "",
+  });
 });
 
-app.post("/reg", (req, res) => {
+app.post("/login", (req, res) => {
   const name = req.body.name;
   const password = req.body.password;
   console.log(req.body);
@@ -80,19 +86,25 @@ app.post("/reg", (req, res) => {
     (error, results) => {
       if (error) {
         console.log("Problem inserting to Database: " + error);
-        res.render(path.join(__dirname, "public", "index"));
+        res.render(path.join(__dirname, "public", "login"), {
+          Message: "!!Problem in Database!!",
+        });
       } else {
         if (results[0] == undefined) {
           console.log("Provide correct information");
-          res.sendFile(path.join(__dirname, "public", "reg.html"));
+          res.render(path.join(__dirname, "public", "login"), {
+            Message: "Username/Password Not matching",
+          });
         } else {
           if (results[0].name == name && results[0].password == password) {
-            res.render(path.join(__dirname, "public", "index"), {
-              UserName: `${name}`,
+            res.render(path.join(__dirname, "public", "home"), {
+              UserName: `Welcome ${name}`,
             });
           } else {
             console.log("Provide correct information");
-            res.sendFile(path.join(__dirname, "public", "reg.html"));
+            res.render(path.join(__dirname, "public", "login"), {
+              Message: "Username/Password Not matching",
+            });
           }
         }
       }
