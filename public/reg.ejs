@@ -24,24 +24,45 @@
       </div>
     </nav>
     <main>
+      <div class="lines">
+        <div class="line"></div>
+        <h2 id="WelcomeLine">
+          <span id="blue">Farm</span><span id="orange">India</span>
+        </h2>
+        <div class="line"></div>
+      </div>
       <div class="form">
         <form action="/reg" method="post">
-          <h2>Enter your deatils to Register</h2>
-          <div class="line"></div>
+          <h2 id="orange">Enter your deatils to Register</h2>
           <div class="fields">
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" required />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name:"
+              required
+            />
           </div>
           <div class="fields">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email:"
+              required
+            />
           </div>
           <div class="fields">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password:"
+              required
+            />
           </div>
           <div class="fields">
-            <input type="submit" value="Register" />
+            <input type="submit" value="Register" id="Submit" />
           </div>
           <h2><%= Message %></h2>
         </form>
