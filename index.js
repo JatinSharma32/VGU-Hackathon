@@ -3,6 +3,8 @@ const path = require("path");
 const mysql = require("mysql");
 const app = express();
 
+let auth = false; //for auth work
+
 //database connect
 const connection = mysql.createConnection({
   host: "localhost",
@@ -26,12 +28,17 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   res.render(path.join(__dirname, "public", "home"), {
-    UserName: `${""}`,
+    UserName: "",
   });
 });
 
 app.get("/store", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "store.html"));
+  // res.sendFile(path.join(__dirname, "public", "store.html"));
+  // Above line is for static file for ejs use render
+  res.render(path.join(__dirname, "public", "store"), {
+    accountName: "Login",
+    Message: "",
+  });
 });
 
 app.get("/team", (req, res) => {
@@ -100,6 +107,7 @@ app.post("/login", (req, res) => {
             res.render(path.join(__dirname, "public", "home"), {
               UserName: `Welcome ${name}`,
             });
+            auth = true;
           } else {
             console.log("Provide correct information");
             res.render(path.join(__dirname, "public", "login"), {
@@ -113,13 +121,27 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/news", (req, res) => {
-  res.render(path.join(__dirname, "public", "News"), {
-    UserName: "",
-  });
+  if (auth == true) {
+    res.render(path.join(__dirname, "public", "News"), {
+      UserName: "",
+    });
+  } else {
+    res.render(path.join(__dirname, "public", "store"), {
+      accountName: "Login",
+      Message: "!!You need to Log In to use these services!!",
+    });
+  }
 });
 
 app.get("/weather", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "weather.html"));
+  if (auth == true) {
+    res.sendFile(path.join(__dirname, "public", "weather.html"));
+  } else {
+    res.render(path.join(__dirname, "public", "store"), {
+      accountName: "Login",
+      Message: "You need to Log In to use these services",
+    });
+  }
 });
 
 app.get("*", (req, res) => {
