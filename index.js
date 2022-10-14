@@ -118,6 +118,10 @@ app.get("/news", (req, res) => {
   });
 });
 
+app.get("/weather", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "weather.html"));
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pnf404.html"));
 });

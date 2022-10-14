@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/weather.css" />
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img class="logoImg" src="Img/logo.jpeg" alt="" srcset="" />
+      </div>
+      <div class="logo">
+        <img class="logoImg" src="Img/user.svg" alt="" srcset="" />
+      </div>
+    </nav>
+    <main>
+      <div class="lines">
+        <div class="line"></div>
+        <h2 id="WelcomeLine">
+          <span id="blue"></span><span id="orange">Weather</span>
+        </h2>
+        <div class="line"></div>
+      </div>
+      <div class="container">
+        <div class="city">Some Error Occured</div>
+        <div class="row">
+            <img src="" class="icon" alt="">
+            <div class="temp"></div>
+        </div>
+        <div class="column">
+            <div class="description"></div>
+            <div class="humidity">Humidity: </div>
+            <div class="speed">Wind Speed: </div>
+        </div>
+      </div>
+      
+      </div>
+    </main>
+    <footer>
+      <div class="nav">
+        <p><a href="/">Home</a></p>
+        <p><a href="/store">Store</a></p>
+        <p><a href="/contact">Contact Us</a></p>
+        <p><a href="/team">Team</a></p>
+      </div>
+    </footer>
+    <script>
+      fetch(
+    "https://api.openweathermap.org/data/2.5/weather?q=jaipur&units=metric&appid=49467b36561faff3399dd1ec37358d26"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      t = data;
+      console.log(data);
+      const Name  = t.name;
+      const Icon= data.weather[0].icon;
+      const Description = data.weather[0].description;
+      const temp= data.main.temp;
+      const humidity = data.main.humidity;
+      const speed = data.wind.speed;
+      console.log(Name, Icon, Description);
+      document.querySelector(".city").innerText = "Weather in Jaipur:";
+      document.querySelector(".icon").src =
+        "https://openweathermap.org/img/wn/" + Icon + ".png";
+      document.querySelector(".description").innerText = Description;
+      document.querySelector(".temp").innerText = temp + " °C";
+      document.querySelector(".humidity").innerText = "Humidity: "+ humidity + "%";
+      document.querySelector(".speed").innerText = "Wind Speed: " + speed + "km/H";
+  });
+  
+    </script>
+  </body>
+</html>
