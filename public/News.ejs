@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmIn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/news.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">
+        <img class="logoImg" src="Img/logo.jpeg" alt="" srcset="" />
+      </div>
+      <div class="logo">
+        <img class="logoImg" src="Img/user.svg" alt="" srcset="" />
+        <p><%= UserName %></p>
+      </div>
+    </nav>
+    <main id="main"></main>
+    <footer>
+      <div class="nav">
+        <p><a href="/">Home</a></p>
+        <p><a href="/store">Store</a></p>
+        <p><a href="/contact">Contact Us</a></p>
+        <p><a href="/team">Team</a></p>
+      </div>
+    </footer>
+
+    <script>
+      const url =
+        "https://newsapi.org/v2/everything?q=farmer&from=2022-10-14&apiKey=822866c181db4d848ab7835e2045f811";
+      fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          if (data) {
+            data.articles.forEach((element) => {
+              console.log(element);
+              let div = document.createElement("div");
+              div.classList.add("news");
+              div.innerHTML = `<div class="Image">
+          <img src="${element.urlToImage}" alt="" id="image" />
+        </div>
+        <div class="text">
+          <h1 id="Title">${element.title}</h1>
+          <h3 id="Author">${element.author}</h3>
+          <h3 id="Date">${element.publishedAt} of Publish</h3>
+          <h3 id="Content">${element.content}</h3>
+        </div>`;
+              main.appendChild(div);
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>

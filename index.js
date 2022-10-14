@@ -112,6 +112,12 @@ app.post("/login", (req, res) => {
   );
 });
 
+app.get("/news", (req, res) => {
+  res.render(path.join(__dirname, "public", "News"), {
+    UserName: "",
+  });
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pnf404.html"));
 });
