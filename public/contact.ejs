@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/reglog.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img class="logoImg" src="Img/logo.jpeg" alt="" srcset="" />
+      </div>
+      <div class="logo">
+        <img class="logoImg" src="Img/user.svg" alt="" srcset="" />
+      </div>
+    </nav>
+    <main>
+      <div class="lines">
+        <div class="line"></div>
+        <h2 id="WelcomeLine">
+          <span id="blue">Farm</span><span id="orange">India</span>
+        </h2>
+        <div class="line"></div>
+      </div>
+      <div class="form">
+        <form action="/reg" method="post">
+          <h2 id="orange">Enter your deatils to Register</h2>
+          <div class="fields">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name:"
+              required
+            />
+          </div>
+          <div class="fields">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email:"
+              required
+            />
+          </div>
+          <div class="fields">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password:"
+              required
+            />
+          </div>
+          <div class="fields">
+            <input type="submit" value="Register" id="Submit" />
+          </div>
+          <h2><%= Message %></h2>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div class="nav">
+        <p><a href="/">Store</a></p>
+        <p><a href="/contact">Contact Us</a></p>
+        <p><a href="/team">Team</a></p>
+        <p><a href="/news">Agri News</a></p>
+        <p><a href="/weather">Weather</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
