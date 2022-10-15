@@ -25,7 +25,11 @@
         <p><%= UserName %></p>
       </div>
     </nav>
-    <main id="main"></main>
+    <main id="main">
+      <div class="loading" id="load">
+        <h1>Loading</h1>
+      </div>
+    </main>
     <footer>
       <div class="nav">
         <p><a href="/home">Home</a></p>
@@ -45,6 +49,7 @@
         .then((data) => {
           console.log(data);
           if (data) {
+            load.style.display = "none";
             data.articles.forEach((element) => {
               console.log(element);
               let div = document.createElement("div");
