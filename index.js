@@ -168,6 +168,10 @@ app.get("/pro", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pro.html"));
 });
 
+app.get("/coming", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "comingSonn.html"));
+});
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pnf404.html"));
 });
