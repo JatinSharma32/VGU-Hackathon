@@ -34,7 +34,7 @@
       </div>
 
       <div class="form">
-        <form action="/reg" method="post">
+        <form action="/contact" method="post">
           <h2 id="orange">Enter your deatils to Register</h2>
           <div class="fields">
             <input
@@ -55,20 +55,45 @@
             />
           </div>
           <div class="fields">
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password:"
-              required
-            />
+            <textarea
+              name="description""
+              placeholder="Description:"
+              cols="35"
+              rows="3"
+              
+            ></textarea>
           </div>
           <div class="fields">
             <input type="submit" value="Register" id="Submit" />
           </div>
           <h2><%= Message %></h2>
         </form>
-        <div id="Desc"></div>
+        <div id="Desc">
+          <!-- Opening Hours
+                  Monday-Friday: 08:00-16:00
+                  Weekends: 09:00-13:00
+                  Public Holidays: 10:00-16:00
+           Get in touch with Us
+                  [samplemail]@gmail.com
+                  [Sample number]
+                  [Address]
+                  Jaipur(RAJ) -->
+
+          <div class="descriptions">
+            <h1>Opening Hours</h1>
+            <div class="line" style="width: 100%; margin: 10px auto"></div>
+            <p class="address">Monday-Friday: 08:00-16:00</p>
+            <p class="address">Weekends: 09:00-13:00</p>
+            <p class="address">Public Holidays: 10:00-16:00</p>
+          </div>
+          <div class="descriptions">
+            <h1>Get in touch with Us</h1>
+            <div class="line" style="width: 100%; margin: 10px auto"></div>
+            <p class="address">[samplemail]@gmail.com</p>
+            <p class="address">[Sample number]</p>
+            <p class="address">[Address], Jaipur, Raj</p>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
