@@ -54,7 +54,10 @@ app.get("/team", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "contact.html"));
+  res.render(path.join(__dirname, "public", "contact"), {
+    UserName: "Login",
+    Message: "",
+  });
 });
 
 app.get("/reg", (req, res) => {

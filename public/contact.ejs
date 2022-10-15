@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reglog.css" />
+    <link rel="stylesheet" href="css/contact.css" />
   </head>
   <body>
     <nav>
@@ -21,6 +21,7 @@
       </div>
       <div class="logo">
         <img class="logoImg" src="Img/user.svg" alt="" srcset="" />
+        <p><%= UserName %></p>
       </div>
     </nav>
     <main>
@@ -31,6 +32,7 @@
         </h2>
         <div class="line"></div>
       </div>
+
       <div class="form">
         <form action="/reg" method="post">
           <h2 id="orange">Enter your deatils to Register</h2>
@@ -66,6 +68,7 @@
           </div>
           <h2><%= Message %></h2>
         </form>
+        <div id="Desc"></div>
       </div>
     </main>
     <footer>
