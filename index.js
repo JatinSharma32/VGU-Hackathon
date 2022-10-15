@@ -54,10 +54,17 @@ app.get("/team", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-  res.render(path.join(__dirname, "public", "contact"), {
-    UserName: "Login",
-    Message: "",
-  });
+  if (auth == true) {
+    res.render(path.join(__dirname, "public", "contact"), {
+      UserName: `${Username}`,
+      Message: "",
+    });
+  } else {
+    res.render(path.join(__dirname, "public", "contact"), {
+      UserName: "Login",
+      Message: "",
+    });
+  }
 });
 
 app.get("/reg", (req, res) => {
