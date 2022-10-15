@@ -39,6 +39,11 @@ nav {
 
 /* Main body */
 
+.sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .lines {
   width: 100%;
   height: fit-content;
@@ -68,6 +73,13 @@ nav {
   margin: 5px auto 80px auto;
 }
 
+.Alert {
+  font-weight: 600;
+  color: rgb(208, 52, 44);
+  font-size: 50px;
+  padding-bottom: 30px;
+}
+
 .city {
   font-weight: 600;
   color: rgb(147, 193, 219);
@@ -77,6 +89,14 @@ nav {
   text-decoration: underline;
   text-decoration-color: rgb(248, 146, 46);
   text-decoration-thickness: 1.5px;
+}
+
+.visualcrossing-wx-widget {
+  background-color: rgb(255 172 90);
+  color: white;
+}
+.visualcrossing-wx-widget {
+  max-height: 140px;
 }
 
 .icon {
@@ -104,8 +124,24 @@ nav {
   padding-left: -10px;
 }
 
+.container-right {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-right: 250px;
+}
+
+.alertDes {
+  align-items: center;
+  font-size: 40px;
+  color: rgb(248, 146, 46);
+  font-weight: 700;
+}
+
 .container {
-  padding-left: 40px;
+  padding: 20px;
+  padding-left: 250px;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
@@ -167,7 +203,16 @@ form h2 {
   margin: 10px;
 }
 
+.weatherWidget {
+  margin: 40px auto;
+  padding-left: 100px;
+  padding-right: 100px;
+  height: fit-content;
+  /* max-height: 80px; */
+}
+
 /* Footer */
+
 main {
   min-height: 73vh;
 }

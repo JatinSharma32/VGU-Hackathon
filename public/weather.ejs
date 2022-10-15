@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>FarmIn | Weather</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap"
       rel="stylesheet"
-    />
-    <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/weather.css" />
-    <script src="./script.js"></script>
-  </head>
+      />
+      <link rel="shortcut icon" href="Img/favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" href="css/weather_new.css" />
+      <script src="scripts/script.js"></script>
+    </head>
   <body>
     <nav>
       <div class="logo">
@@ -33,23 +33,38 @@
         </h2>
         <div class="line"></div>
       </div>
-      <div class="container">
-        <div class="city">Some Error Occured</div>
-        <div class="row">
-            <img src="" class="icon" alt="">
-            <div class="temp"></div>
+      <div class="sections">
+        <div class="container">
+          <div class="city">Some Error Occured</div>
+          <div class="row">
+              <img src="" class="icon" alt="">
+              <div class="temp"></div>
+            </div>
+            <div class="column">
+              <div class="description"></div>
+              <div class="humidity">Humidity: </div>
+              <div class="speed">Wind Speed: </div>
+          </div>
         </div>
-        <div class="column">
-            <div class="description"></div>
-            <div class="humidity">Humidity: </div>
-            <div class="speed">Wind Speed: </div>
+        <div class="container-right ">
+          <div class="Alert">
+            Alert Box
+          </div>
+          <div class="alertDes">
+            <div class="alertapi" style="font-size: 50px;">0</div>
+            <div style="font-size: 20px;">Alerts as of now</div> 
+          </div>
         </div>
       </div>
+
+      <div class="weatherWidget" ></div>
+
+      
       
       </div>
     </main>
     <footer>
-     <div class="nav">
+      <div class="nav">
         <p><a href="/">Store</a></p>
         <p><a href="/contact">Contact Us</a></p>
         <p><a href="/team">Team</a></p>
@@ -57,30 +72,25 @@
         <p><a href="/weather">Weather</a></p>
       </div>
     </footer>
-    <script>
-      fetch(
-    "https://api.openweathermap.org/data/2.5/weather?q=jaipur&units=metric&appid=49467b36561faff3399dd1ec37358d26"
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      t = data;
-      console.log(data);
-      const Name  = t.name;
-      const Icon= data.weather[0].icon;
-      const Description = data.weather[0].description;
-      const temp= data.main.temp;
-      const humidity = data.main.humidity;
-      const speed = data.wind.speed;
-      console.log(Name, Icon, Description);
-      document.querySelector(".city").innerText = "Weather in Jaipur:";
-      document.querySelector(".icon").src =
-        "https://openweathermap.org/img/wn/" + Icon + ".png";
-      document.querySelector(".description").innerText = Description;
-      document.querySelector(".temp").innerText = temp + " °C";
-      document.querySelector(".humidity").innerText = "Humidity: "+ humidity + "%";
-      document.querySelector(".speed").innerText = "Wind Speed: " + speed + "km/H";
-  });
-  
-    </script>
   </body>
+  <script>
+    window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+    window.weatherWidgetConfig.push({
+        selector:".weatherWidget",
+        apiKey:"NRYNBTQ33P7W5BUY9H8MKMLL6", //Sign up for your personal key
+        location:"Jaipur, IN", //Enter an address
+        unitGroup:"metric", //"us" or "metric"
+        forecastDays:5, //how many days forecast to show
+        title:"Jaipur, IN", //optional title to show in the 
+        showTitle:true, 
+        showConditions:true
+    });
+   
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+ </script>
 </html>
