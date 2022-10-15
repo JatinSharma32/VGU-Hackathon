@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
 const app = express();
+let Username = "";
 
 let auth = false; //for auth work
 
@@ -28,17 +29,24 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/home", (req, res) => {
   res.render(path.join(__dirname, "public", "home"), {
-    UserName: "",
+    UserName: `${Username}`,
   });
 });
 
 app.get("/", (req, res) => {
+  if (auth == true) {
+    res.render(path.join(__dirname, "public", "store"), {
+      accountName: `${Username}`,
+      Message: "",
+    });
+  } else {
+    res.render(path.join(__dirname, "public", "store"), {
+      accountName: "Login",
+      Message: "",
+    });
+  }
   // res.sendFile(path.join(__dirname, "public", "store.html"));
   // Above line is for static file for ejs use render
-  res.render(path.join(__dirname, "public", "store"), {
-    accountName: "Login",
-    Message: "",
-  });
 });
 
 app.get("/team", (req, res) => {
@@ -50,9 +58,15 @@ app.get("/contact", (req, res) => {
 });
 
 app.get("/reg", (req, res) => {
-  res.render(path.join(__dirname, "public", "reg"), {
-    Message: "",
-  });
+  if (auth == true) {
+    res.render(path.join(__dirname, "public", "reg"), {
+      Message: `${Username}`,
+    });
+  } else {
+    res.render(path.join(__dirname, "public", "reg"), {
+      Message: "",
+    });
+  }
 });
 
 app.post("/reg", (req, res) => {
@@ -70,8 +84,10 @@ app.post("/reg", (req, res) => {
         });
       } else {
         console.log("1 item inserted");
-        res.render(path.join(__dirname, "public", "home"), {
-          UserName: `Welcome ${name}`,
+        auth == true;
+        Username = name;
+        res.render(path.join(__dirname, "public", "store"), {
+          UserName: `${name}`,
         });
       }
     }
@@ -104,11 +120,12 @@ app.post("/login", (req, res) => {
           });
         } else {
           if (results[0].name == name && results[0].password == password) {
+            auth = true;
+            Username = name;
             res.render(path.join(__dirname, "public", "store"), {
               accountName: `${name}`,
               Message: "",
             });
-            auth = true;
           } else {
             console.log("Provide correct information");
             res.render(path.join(__dirname, "public", "login"), {
@@ -124,7 +141,7 @@ app.post("/login", (req, res) => {
 app.get("/news", (req, res) => {
   if (auth == true) {
     res.render(path.join(__dirname, "public", "News"), {
-      UserName: "",
+      UserName: `${Username}`,
     });
   } else {
     res.render(path.join(__dirname, "public", "store"), {
@@ -136,7 +153,9 @@ app.get("/news", (req, res) => {
 
 app.get("/weather", (req, res) => {
   if (auth == true) {
-    res.sendFile(path.join(__dirname, "public", "weather.html"));
+    res.render(path.join(__dirname, "public", "weather"), {
+      UserName: `${Username}`,
+    });
   } else {
     res.render(path.join(__dirname, "public", "store"), {
       accountName: "Login",
