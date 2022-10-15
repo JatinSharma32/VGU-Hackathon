@@ -26,13 +26,13 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
+app.get("/home", (req, res) => {
   res.render(path.join(__dirname, "public", "home"), {
     UserName: "",
   });
 });
 
-app.get("/store", (req, res) => {
+app.get("/", (req, res) => {
   // res.sendFile(path.join(__dirname, "public", "store.html"));
   // Above line is for static file for ejs use render
   res.render(path.join(__dirname, "public", "store"), {
@@ -104,8 +104,9 @@ app.post("/login", (req, res) => {
           });
         } else {
           if (results[0].name == name && results[0].password == password) {
-            res.render(path.join(__dirname, "public", "home"), {
-              UserName: `Welcome ${name}`,
+            res.render(path.join(__dirname, "public", "store"), {
+              accountName: `${name}`,
+              Message: "",
             });
             auth = true;
           } else {
@@ -148,6 +149,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "pnf404.html"));
 });
 
-app.listen(800, () => {
+app.listen(200, () => {
   console.log("Server started at port 200...");
 });
